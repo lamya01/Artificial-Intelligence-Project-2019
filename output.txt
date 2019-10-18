@@ -1,0 +1,112 @@
+Using TensorFlow backend.
+2019-10-18 19:02:10.623633: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-10-18 19:02:10.839805: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1800000000 Hz
+2019-10-18 19:02:10.842146: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x558bb97eb750 executing computations on platform Host. Devices:
+2019-10-18 19:02:10.842258: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
+Train on 450 samples, validate on 50 samples
+Epoch 1/50
+ - 1s - loss: 0.6579 - accuracy: 0.6667 - val_loss: 0.5215 - val_accuracy: 0.8400
+Epoch 2/50
+ - 0s - loss: 0.4391 - accuracy: 0.8867 - val_loss: 0.3968 - val_accuracy: 0.7600
+Epoch 3/50
+ - 0s - loss: 0.3020 - accuracy: 0.8911 - val_loss: 0.3286 - val_accuracy: 0.7800
+Epoch 4/50
+ - 0s - loss: 0.2425 - accuracy: 0.8911 - val_loss: 0.3092 - val_accuracy: 0.7800
+Epoch 5/50
+ - 0s - loss: 0.2106 - accuracy: 0.8911 - val_loss: 0.2844 - val_accuracy: 0.8400
+Epoch 6/50
+ - 0s - loss: 0.1836 - accuracy: 0.8911 - val_loss: 0.2423 - val_accuracy: 0.8400
+Epoch 7/50
+ - 0s - loss: 0.1557 - accuracy: 0.8911 - val_loss: 0.2270 - val_accuracy: 0.8400
+Epoch 8/50
+ - 0s - loss: 0.1359 - accuracy: 0.8911 - val_loss: 0.2070 - val_accuracy: 0.8400
+Epoch 9/50
+ - 0s - loss: 0.1238 - accuracy: 0.8911 - val_loss: 0.2031 - val_accuracy: 0.8400
+Epoch 10/50
+ - 0s - loss: 0.1168 - accuracy: 0.8911 - val_loss: 0.1876 - val_accuracy: 0.8400
+Epoch 11/50
+ - 0s - loss: 0.1118 - accuracy: 0.8911 - val_loss: 0.1813 - val_accuracy: 0.8400
+Epoch 12/50
+ - 0s - loss: 0.1079 - accuracy: 0.8911 - val_loss: 0.1759 - val_accuracy: 0.8400
+Epoch 13/50
+ - 0s - loss: 0.1048 - accuracy: 0.8911 - val_loss: 0.1702 - val_accuracy: 0.8400
+Epoch 14/50
+ - 0s - loss: 0.1022 - accuracy: 0.9533 - val_loss: 0.1643 - val_accuracy: 0.9600
+Epoch 15/50
+ - 0s - loss: 0.0999 - accuracy: 0.9644 - val_loss: 0.1576 - val_accuracy: 0.9600
+Epoch 16/50
+ - 0s - loss: 0.1001 - accuracy: 0.9622 - val_loss: 0.1584 - val_accuracy: 0.9400
+Epoch 17/50
+ - 0s - loss: 0.0961 - accuracy: 0.9644 - val_loss: 0.1556 - val_accuracy: 0.9400
+Epoch 18/50
+ - 0s - loss: 0.0946 - accuracy: 0.9644 - val_loss: 0.1516 - val_accuracy: 0.9600
+Epoch 19/50
+ - 0s - loss: 0.0931 - accuracy: 0.9644 - val_loss: 0.1484 - val_accuracy: 0.9600
+Epoch 20/50
+ - 0s - loss: 0.0918 - accuracy: 0.9644 - val_loss: 0.1454 - val_accuracy: 0.9600
+Epoch 21/50
+ - 0s - loss: 0.0906 - accuracy: 0.9644 - val_loss: 0.1427 - val_accuracy: 0.9600
+Epoch 22/50
+ - 0s - loss: 0.0896 - accuracy: 0.9644 - val_loss: 0.1403 - val_accuracy: 0.9600
+Epoch 23/50
+ - 0s - loss: 0.0886 - accuracy: 0.9644 - val_loss: 0.1378 - val_accuracy: 0.9600
+Epoch 24/50
+ - 0s - loss: 0.0878 - accuracy: 0.9644 - val_loss: 0.1357 - val_accuracy: 0.9600
+Epoch 25/50
+ - 0s - loss: 0.0870 - accuracy: 0.9644 - val_loss: 0.1336 - val_accuracy: 0.9600
+Epoch 26/50
+ - 0s - loss: 0.0863 - accuracy: 0.9644 - val_loss: 0.1320 - val_accuracy: 0.9600
+Epoch 27/50
+ - 0s - loss: 0.0857 - accuracy: 0.9644 - val_loss: 0.1301 - val_accuracy: 0.9600
+Epoch 28/50
+ - 0s - loss: 0.0852 - accuracy: 0.9644 - val_loss: 0.1287 - val_accuracy: 0.9600
+Epoch 29/50
+ - 0s - loss: 0.0847 - accuracy: 0.9644 - val_loss: 0.1271 - val_accuracy: 0.9600
+Epoch 30/50
+ - 0s - loss: 0.0843 - accuracy: 0.9644 - val_loss: 0.1257 - val_accuracy: 0.9600
+Epoch 31/50
+ - 0s - loss: 0.0555 - accuracy: 0.9933 - val_loss: 0.0863 - val_accuracy: 0.9800
+Epoch 32/50
+ - 0s - loss: 0.0448 - accuracy: 1.0000 - val_loss: 0.0686 - val_accuracy: 1.0000
+Epoch 33/50
+ - 0s - loss: 0.0432 - accuracy: 1.0000 - val_loss: 0.0670 - val_accuracy: 1.0000
+Epoch 34/50
+ - 0s - loss: 0.0391 - accuracy: 1.0000 - val_loss: 0.0712 - val_accuracy: 0.9800
+Epoch 35/50
+ - 0s - loss: 0.0370 - accuracy: 1.0000 - val_loss: 0.0662 - val_accuracy: 0.9800
+Epoch 36/50
+ - 0s - loss: 0.0345 - accuracy: 1.0000 - val_loss: 0.0625 - val_accuracy: 0.9800
+Epoch 37/50
+ - 0s - loss: 0.0324 - accuracy: 1.0000 - val_loss: 0.0574 - val_accuracy: 0.9800
+Epoch 38/50
+ - 0s - loss: 0.0304 - accuracy: 1.0000 - val_loss: 0.0532 - val_accuracy: 1.0000
+Epoch 39/50
+ - 0s - loss: 0.0285 - accuracy: 1.0000 - val_loss: 0.0428 - val_accuracy: 1.0000
+Epoch 40/50
+ - 0s - loss: 0.0267 - accuracy: 1.0000 - val_loss: 0.0474 - val_accuracy: 1.0000
+Epoch 41/50
+ - 0s - loss: 0.0249 - accuracy: 1.0000 - val_loss: 0.0483 - val_accuracy: 0.9800
+Epoch 42/50
+ - 0s - loss: 0.0238 - accuracy: 1.0000 - val_loss: 0.0364 - val_accuracy: 1.0000
+Epoch 43/50
+ - 0s - loss: 0.0220 - accuracy: 1.0000 - val_loss: 0.0392 - val_accuracy: 1.0000
+Epoch 44/50
+ - 0s - loss: 0.0206 - accuracy: 1.0000 - val_loss: 0.0312 - val_accuracy: 1.0000
+Epoch 45/50
+ - 0s - loss: 0.0193 - accuracy: 1.0000 - val_loss: 0.0336 - val_accuracy: 1.0000
+Epoch 46/50
+ - 0s - loss: 0.0180 - accuracy: 1.0000 - val_loss: 0.0340 - val_accuracy: 1.0000
+Epoch 47/50
+ - 0s - loss: 0.0171 - accuracy: 1.0000 - val_loss: 0.0259 - val_accuracy: 1.0000
+Epoch 48/50
+ - 0s - loss: 0.0159 - accuracy: 1.0000 - val_loss: 0.0275 - val_accuracy: 1.0000
+Epoch 49/50
+ - 0s - loss: 0.0148 - accuracy: 1.0000 - val_loss: 0.0277 - val_accuracy: 1.0000
+Epoch 50/50
+ - 0s - loss: 0.0140 - accuracy: 1.0000 - val_loss: 0.0217 - val_accuracy: 1.0000
+
+Confusion Matrix :
+[[10  0]
+ [ 0 40]]
+
+Execution time in seconds =  0:00:16.003368

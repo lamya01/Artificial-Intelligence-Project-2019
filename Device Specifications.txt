@@ -1,0 +1,5 @@
+Model : Dell XPS 9570
+Processor : Intel Core i7 8th Gen @ 2.2 GHz
+RAM : 32 GB
+SSD : 1 TB
+GPU : Nvidia GTX 1050 Ti

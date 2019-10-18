@@ -1,0 +1,5 @@
+- DNNEye.py contains the all the required code.
+- Eyes.csv contains 500 rows of "eye co-ordinates" extracted from different people on asking questions.
+- Results.csv contains True labels vs Actual labels for easier visualization.
+- DNN Represntation.jpg contains the pictorial representation of the Deep Neural Netork we are using.
+- Device Specifications.txt contains device contains my laptop's specs.
