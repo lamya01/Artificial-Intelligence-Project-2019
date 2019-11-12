@@ -6,8 +6,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 
-os.chdir(os.path.join(os.getcwd(), 'Projects/AI/'))
-print(os.getcwd())
+#os.chdir(os.path.join(os.getcwd(), 'Projects/AI/'))
+#print(os.getcwd())
 
 # %%
 dataset = np.loadtxt('EYES.csv', dtype=int, delimiter=',', skiprows=1)
@@ -33,7 +33,19 @@ one_hot = OneHotEncoder()
 y_train_hot = one_hot.fit_transform(y_train.reshape(-1, 1)).todense()
 y_test_hot = one_hot.transform(y_test.reshape(-1, 1)).todense()
 
-nn_model1 = mlrose.NeuralNetwork(hidden_nodes=[4], activation='relu', algorithm='random_hill_climb', max_iters=1000, bias=True, is_classifier=True, learning_rate=0.0001, early_stopping=True, clip_max=5, max_attempts=100, random_state=0)
+nn_model1 = mlrose.NeuralNetwork(
+	hidden_nodes=[4],
+	activation='relu',
+	algorithm='random_hill_climb',
+	max_iters=10000,
+	bias=True,
+	is_classifier=True,
+	learning_rate=0.0001,
+	early_stopping=False,
+	clip_max=5,
+	max_attempts=100,
+	random_state=0
+)
 
 nn_model1.fit(x_train_scaled, y_train_hot)
 
