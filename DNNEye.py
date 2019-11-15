@@ -1,4 +1,3 @@
-# Author : Ameya Bhamare
 from datetime import datetime
 
 import numpy as np
@@ -11,34 +10,20 @@ from sklearn.preprocessing import StandardScaler as SC
 
 startTime = datetime.now()
 
-l = []
-
-
-def generateColumns(start, end):
-    for i in range(start, end + 1):
-        l.extend([str(i) + "X", str(i) + "Y"])
-    return l
-
-
-eyes = generateColumns(1, 12)
+# eyes = [f"{i}{x}" for i in range(1, 13) for x in ('X', 'Y')]
 
 # reading in the csv as a dataframe
-df = pd.read_csv("EYES.csv", index_col=0)
-
-# selecting the features and target
-X = df[eyes]
-y = df["truth_value"]
+dataset = np.loadtxt('EYES.csv', dtype=int, delimiter=',', skiprows=1)
+y = dataset[:, -1]
+X = dataset[:, 1: - 1]
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.10, random_state=42)
+    X, y, test_size=0.1, random_state=42)
 
 # Data Normalization
 sc = SC()
 X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
-
-X_train, y_train, X_test, y_test = np.array(X_train), np.array(
-    y_train), np.array(X_test), np.array(y_test)
 
 # layering up the cnn
 model = Sequential()
@@ -50,23 +35,11 @@ model.add(Dense(1))
 model.add(Activation("sigmoid"))
 
 # model compilation
-opt = "adam"
-model.compile(loss="binary_crossentropy", optimizer=opt, metrics=["accuracy"])
+model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 
 # training
 model.fit(X_train, y_train, batch_size=2, epochs=50,
-          validation_data=(X_test, y_test), verbose=2)
-
-"""
-# serialize model to JSON
-model_json = model.to_json()
-with open("modelEyes.json", "w") as json_file:
-	json_file.write(model_json)
-
-# serialize weights to HDF5
-model.save_weights("modelEyes.h5")
-print("Saved model to disk")
-"""
+          validation_data=(X_test, y_test), verbose=0)
 
 # using the learned weights to predict the target
 y_pred = model.predict(X_test)
@@ -74,11 +47,9 @@ y_pred = model.predict(X_test)
 # setting a confidence threshhold of 0.9
 y_pred_labels = list(y_pred > 0.9)
 
-for i in range(len(y_pred_labels)):
-    if int(y_pred_labels[i]) == 1:
-        y_pred_labels[i] = 1
-    else:
-        y_pred_labels[i] = 0
+# print(y_pred_labels)
+
+y_pred_labels = [1 if int(i) == 1 else 0 for i in y_pred_labels]
 
 # plotting a confusion matrix
 cm = confusion_matrix(y_test, y_pred_labels)
