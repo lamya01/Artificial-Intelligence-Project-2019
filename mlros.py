@@ -2,7 +2,6 @@ from datetime import datetime
 
 import mlrose
 import numpy as np
-import pandas as pd
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -20,12 +19,12 @@ x_train = scaler.fit_transform(x_train)
 x_test = scaler.fit_transform(x_test)
 
 nn_model = mlrose.NeuralNetwork(
-	hidden_nodes = [12],
+	hidden_nodes = [4],
 	activation = 'relu',
 	algorithm = 'genetic_alg',
 	max_iters = 1,
 	is_classifier = True,
-	random_state = 15
+	random_state = 72
 )
 
 nn_model.fit(x_train, y_train) # Training
