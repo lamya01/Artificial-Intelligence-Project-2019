@@ -48,9 +48,9 @@ nn_model.fit(x_train, y_train)
 
 y_pred = nn_model.predict(x_test)
 
-y_pred_labels = [1 if int(i) == 1 else 0 for i in list(y_pred > 0.9)]
+y_pred_labels = [1 if i else 0 for i in list(y_pred > 0.9)]
 
-print("Confusion Matrix 1:\n", confusion_matrix(y_test, y_pred_labels))
-print("Accuracy 1:", accuracy_score(y_test, y_pred_labels))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_labels))
+print(f"Accuracy: {accuracy_score(y_test, y_pred_labels) * 100}%")
 print("Report\n", classification_report(y_test, y_pred_labels))
 print("Execution time in seconds =", datetime.now() - startTime)
