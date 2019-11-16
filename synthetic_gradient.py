@@ -9,9 +9,16 @@ def sigmoid(x): return 1 / (1 + np.exp(-x))
 
 def grad_sigmoid(x): return x * (1 - x)
 
-def relu(x): return np.maximum(0, x)
+def relu(x):
+	fx = np.copy(x)
+	fx[np.where(fx < 0)] = 0
+	return fx
 
-def grad_relu(x): return np.array([[1 if i else 0 for i in j] for j in x])
+def grad_relu(x):
+	fx = np.copy(x)
+	fx[np.where(fx < 0)] = 0
+	fx[np.where(fx > 0)] = 1
+	return fx
 
 
 dataset = np.loadtxt('EYES.csv', dtype=int, delimiter=',', skiprows=1)

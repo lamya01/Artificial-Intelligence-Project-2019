@@ -6,6 +6,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+import warnings; warnings.filterwarnings("ignore")
+
 startTime = datetime.now()
 
 dataset = np.loadtxt('EYES.csv', dtype=int, delimiter=',', skiprows=1)
@@ -22,10 +24,11 @@ nn_model = mlrose.NeuralNetwork(
 	hidden_nodes = [4],
 	activation = 'relu',
 	algorithm = 'genetic_alg',
-	max_iters = 1,
+	max_iters = 1000,
 	is_classifier = True,
-	random_state = 72
+	# random_state = 27
 )
+nn_model.output_activation = "sigmoid"
 
 nn_model.fit(x_train, y_train) # Training
 y_pred = nn_model.predict(x_test) # Testing
