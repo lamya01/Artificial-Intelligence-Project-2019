@@ -1,13 +1,14 @@
-#!/usr/bin/env python -W ignore
 from datetime import datetime
 
 import mlrose
 import numpy as np
 import pandas as pd
 from sklearn.metrics import (accuracy_score, classification_report,
-							 confusion_matrix)
+                             confusion_matrix)
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+
+import warnings; warnings.filterwarnings("ignore")
 
 startTime = datetime.now()
 
@@ -30,13 +31,13 @@ def model(algorithm, iterations=50, activation='relu'):
 		algorithm = algorithm,
 		max_iters = iterations,
 		is_classifier = True,
-		random_state = 72
+		# random_state = 72
 	)
 	nn_model.fit(x_train, y_train)
 	y_pred = nn_model.predict(x_test)
 	return y_pred
 
-algos = {'random_hill_climb', 'simulated_annealing', 'genetic_alg', 'gradient_desc'}
+algos = {'random_hill_climb', 'simulated_annealing', 'genetic_alg', 'gradient_descent'}
 
 accuracies = {algo: accuracy_score(y_test, model(algo)) for algo in algos}
 
@@ -44,12 +45,12 @@ opt_algorithm = max(accuracies, key=lambda algo: accuracies[algo])
 
 max_accuracy = accuracies[opt_algorithm]
 
-print("Exploiting algorithm:", opt_algorithm)
+print(f"Exploiting {opt_algorithm} algorithm:")
 
 same = 0
 
-while same < 5 and max_accuracy < 98:
-	iters += 550
+while same < 3 and max_accuracy < 0.98:
+	iters += 450
 	y_pred = model(opt_algorithm, iters)
 	y_accuracy = accuracy_score(y_test, y_pred)
 
