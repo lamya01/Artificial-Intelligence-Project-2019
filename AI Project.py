@@ -22,46 +22,33 @@ scaler = StandardScaler()
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.fit_transform(x_test)
 
-iters = 50
-
 def model(algorithm, iterations=50, activation='relu'):
-	nn_model = mlrose.NeuralNetwork(
+	nn = mlrose.NeuralNetwork(
 		hidden_nodes = [4],
 		activation = activation,
 		algorithm = algorithm,
 		max_iters = iterations,
 		is_classifier = True,
-		# random_state = 72
+		random_state = 2
 	)
-	nn_model.fit(x_train, y_train)
-	y_pred = nn_model.predict(x_test)
+	nn.output_activation = mlrose.activation.sigmoid
+	nn.fit(x_train, y_train)
+	y_pred = nn.predict(x_test)
 	return y_pred
 
-algos = {'random_hill_climb', 'simulated_annealing', 'genetic_alg', 'gradient_descent'}
+algos = ('random_hill_climb', 'simulated_annealing', 'gradient_descent') # , 'genetic_alg',
 
+[print(f"Exploring {algo}") for algo in algos]
 accuracies = {algo: accuracy_score(y_test, model(algo)) for algo in algos}
 
 opt_algorithm = max(accuracies, key=lambda algo: accuracies[algo])
 
-max_accuracy = accuracies[opt_algorithm]
+y_accuracy = accuracies[opt_algorithm]
 
-print(f"Exploiting {opt_algorithm} algorithm:")
+print(f"Exploiting {opt_algorithm} algorithm")
 
-same = 0
-
-while same < 3 and max_accuracy < 0.98:
-	iters += 450
-	y_pred = model(opt_algorithm, iters)
-	y_accuracy = accuracy_score(y_test, y_pred)
-
-	if y_accuracy - max_accuracy < 1e-1: same += 1
-	else: same = 0
-
-	print(f"Current accuracy: {y_accuracy * 100}% In {iters} iterations")
-	print(f"Current execution time elapsed = {datetime.now() - startTime}")
-
-	if y_accuracy > max_accuracy: max_accuracy = y_accuracy
-
+y_pred = model(opt_algorithm, 1000)
+y_accuracy = accuracy_score(y_test, y_pred)
 
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 print(f"Accuracy: {accuracy_score(y_test, y_pred) * 100}%")
