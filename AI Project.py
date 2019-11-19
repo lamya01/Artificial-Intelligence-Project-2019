@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+'''Authors
+Sarthak Gupta (PES1201700077)
+Dhruv Vohra   (PES1201700281)
+Lamya Bhasin  (PES1201701244)
+'''
+
 from datetime import datetime
 
 import mlrose
