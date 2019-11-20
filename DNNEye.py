@@ -50,7 +50,7 @@ opt = 'adam'
 model.compile(loss = 'binary_crossentropy', optimizer = opt, metrics = ['accuracy'])
 
 # training
-model.fit(X_train, y_train, batch_size = 2, epochs = 50, validation_data = (X_test, y_test), verbose = 0)
+model.fit(X_train, y_train, batch_size = 2, epochs = 50, validation_data = (X_test, y_test), verbose = 2)
 
 '''
 # serialize model to JSON

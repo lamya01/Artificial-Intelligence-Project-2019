@@ -17,7 +17,22 @@ from sklearn.preprocessing import StandardScaler
 
 import warnings; warnings.filterwarnings("ignore")
 
-startTime = datetime.now()
+
+def model(algorithm, x_train, y_train, x_test, iterations=100, activation='relu'):
+	nn = mlrose.NeuralNetwork(
+		hidden_nodes = [4],
+		activation = activation,
+		algorithm = algorithm,
+		max_iters = iterations,
+		is_classifier = True,
+		learning_rate = 0.0001,
+		# random_state = 2
+	)
+	nn.output_activation = mlrose.activation.sigmoid
+	nn.fit(x_train, y_train)
+	y_pred = nn.predict(x_test)
+	return y_pred
+
 
 dataset = np.loadtxt('EYES.csv', dtype=int, delimiter=',', skiprows=1)
 y = dataset[:, -1]
@@ -29,32 +44,18 @@ scaler = StandardScaler()
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.fit_transform(x_test)
 
-def model(algorithm, iterations=50, activation='relu'):
-	nn = mlrose.NeuralNetwork(
-		hidden_nodes = [4],
-		activation = activation,
-		algorithm = algorithm,
-		max_iters = iterations,
-		is_classifier = True,
-		random_state = 2
-	)
-	nn.output_activation = mlrose.activation.sigmoid
-	nn.fit(x_train, y_train)
-	y_pred = nn.predict(x_test)
-	return y_pred
-
 algos = ('random_hill_climb', 'simulated_annealing', 'gradient_descent') # , 'genetic_alg',
 
+startTime = datetime.now()
+
 [print(f"Exploring {algo}") for algo in algos]
-accuracies = {algo: accuracy_score(y_test, model(algo)) for algo in algos}
+accuracies = {algo: accuracy_score(y_train, model(algo, x_train, y_train, x_train)) for algo in algos}
 
 opt_algorithm = max(accuracies, key=lambda algo: accuracies[algo])
 
-y_accuracy = accuracies[opt_algorithm]
-
 print(f"Exploiting {opt_algorithm} algorithm")
 
-y_pred = model(opt_algorithm, 1000)
+y_pred = model(opt_algorithm, x_train, y_train, x_test, 1000)
 y_accuracy = accuracy_score(y_test, y_pred)
 
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
